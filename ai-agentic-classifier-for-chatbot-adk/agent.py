@@ -240,7 +240,7 @@ async def main():
 
     # Make sure API key is set
     if not os.getenv('GOOGLE_API_KEY'):
-        print("❌ Please set GOOGLE_API_KEY environment variable")
+        print("Please set GOOGLE_API_KEY environment variable")
         return
 
     label_schema = {
@@ -250,7 +250,7 @@ async def main():
         ]
     }
 
-    print("🚀 Testing ADK Classifier")
+    print("Testing ADK Classifier")
     print("=" * 50)
 
     # Test with simple classifier
@@ -264,19 +264,19 @@ async def main():
     ]
 
     for i, test_case in enumerate(test_cases, 1):
-        print(f"\n📝 Test {i}: '{test_case['message']}'")
+        print(f"\nTest {i}: '{test_case['message']}'")
         print("-" * 40)
 
         result = await classifier.predict(test_case)
 
         if result['success']:
-            print(f"✅ Labels: {result['predicted_labels']}")
-            print(f"📊 Confidences: {[f'{c:.2f}' for c in result['confidence_scores']]}")
-            print(f"🚨 Human Review: {result['needs_human_review']}")
-            print(f"⚠️  Risk: {result.get('risk_assessment', 'N/A')}")
-            print(f"💭 Reasoning: {result['reasoning'][:80]}...")
+            print(f"Labels: {result['predicted_labels']}")
+            print(f"Confidences: {[f'{c:.2f}' for c in result['confidence_scores']]}")
+            print(f"Human Review: {result['needs_human_review']}")
+            print(f"Risk: {result.get('risk_assessment', 'N/A')}")
+            print(f"Reasoning: {result['reasoning'][:80]}...")
         else:
-            print(f"❌ Failed: {result.get('error', 'Unknown error')}")
+            print(f"Failed: {result.get('error', 'Unknown error')}")
 
 
 if __name__ == "__main__":
